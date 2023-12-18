@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose')
 const authRouter = require('./routes/authRouter');
 const cors = require('cors');
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 4025;
 const cookieParser = require('cookie-parser');
 const { coockie_secret } = require("./config");
@@ -16,17 +16,17 @@ app.use(cors({
 }));
 
 app.use(cookieParser(coockie_secret));
-app.use("/auth/", authRouter);
+app.use('/auth/', authRouter);
 
 app.use((error, req, res, next) => {
 	console.log(error);
-	const yakStatus = error.statusCode || 500;
-	const yakMessage = error.message;
-	const yakData = error.data;
-	res.status(yakStatus).json({ message: yakMessage, data: yakData });
+	const status = error.statusCode || 500;
+	const message = error.message;
+	const data = error.data;
+	res.status(status).json({ message: message, data: data });
 });
 
-const MONGOOSE_URI = `mongodb+srv://fakenroutes_capital_root:B7eSz9LfvQxzKa2y@cluster0.8fnlfei.mongodb.net/?retryWrites=true&w=majority`;
+const MONGOOSE_URI = `mongodb+srv://daintymonk:EsmPZKO3gViaYdFC@cluster0.oqpwwmn.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose
 	.connect(MONGOOSE_URI)
